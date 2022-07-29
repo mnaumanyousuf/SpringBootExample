@@ -1,0 +1,25 @@
+version: "3.8"
+services:
+  mysqldb:
+    platform: linux/x86_64
+    image: "mysql:8.0.29"
+    ports:
+      - 3307:3306
+    environment:
+      MYSQL_DATABASE: db_example
+      MYSQL_USER: muhammadnauman
+      MYSQL_PASSWORD: Nauman123
+      MYSQL_ROOT_PASSWORD: Nauman123
+    volumes:
+      - mysql-data-volume:/var/lib/mysql
+
+  server:
+    build: .
+    ports:
+      - 8080:8080
+    depends_on:
+      - mysqldb
+    volumes:
+      - .:/code
+volumes:
+  mysql-data-volume:

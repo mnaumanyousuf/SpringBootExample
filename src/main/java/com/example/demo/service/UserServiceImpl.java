@@ -112,6 +112,7 @@ public class UserServiceImpl implements UserService {
         }
         autoResponse.Success = false;
         autoResponse.Message = "No such user";
+        autoResponse.StatusCode = HttpStatus.NOT_FOUND;
         return autoResponse;
     }
 
